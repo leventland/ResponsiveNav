@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+       <script>
+		$(function() {
+			var pull 		= $('#nav-icon');
+				menu 		= $('#primary-nav');
+				menuHeight	= menu.height();
+				submenu     = $('.sub-menu');
+				submenutrigger = $('.drop-toggle');
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				$(pull).toggleClass( "open", 1000, "linear" );
+				$(menu).slideToggle("nav-open");
+			});	    
+			$('.drop-toggle').on('click', function(e) {
+				e.preventDefault();
+				$(this).toggleClass('submenu-open');
+				$(this).next('.sub-menu').slideToggle();});
+				$('li', '.sub-menu').on('click', function(e) {
+             e.stopPropagation();
+});
+});
+
+$(window).resize(function(){
+        		var w = $(window).width();
+        		if(w > 320 && menu.is(':hidden')) {
+       			menu.removeAttr('style');
+				submenu.removeAttr('style');
+        		}
+    		});
+			</script> 
+    
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="nav-icon">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<nav class="clearfix">
+<ul id="primary-nav">
+<li><a href="#">Home</a></li>
+<li class="menu-item-has-children"><a href="#">About Us</a><span class="drop-toggle">+</span>
+
+<ul class="sub-menu">
+<li><a href="#">Dropdown One</a></li>
+<li><a href="#">Dropdown Two</a></li>
+<li><a href="#">Dropdown Three</a></li>
+</ul>
+</li>
+<li class="menu-item-has-children"><a href="#">Services</a><span class="drop-toggle">+</span>
+
+<ul class="sub-menu">
+<li><a href="#">Dropdown One</a></li>
+<li><a href="#">Dropdown Two</a></li>
+<li><a href="#">Dropdown Three</a></li>
+</ul>
+</li>
+<li><a href="#">History</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>
+
+</nav>
+</body>
+</html>
